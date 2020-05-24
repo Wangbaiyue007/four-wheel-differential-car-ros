@@ -1,24 +1,29 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "",
-        "limitSymbolsToIncludedHeaders": true
-      },
-      "includePath": [
-        "/home/baiyue/catkin_ws/devel/include/**",
-        "/opt/ros/kinetic/include/**",
-        "/home/baiyue/catkin_ws/src/agitr/include/**",
-        "/home/baiyue/catkin_ws/src/beginner_tutorials/include/**",
-        "/home/baiyue/catkin_ws/src/learning_tf/include/**",
-        "/home/baiyue/catkin_ws/src/r2d2/include/**",
-        "/home/baiyue/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include/**",
-        "/home/baiyue/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
-        "/home/baiyue/catkin_ws/src/turtlebot3/turtlebot3_slam/include/**",
-        "/home/baiyue/catkin_ws/src/using_markers/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS"
-    }
-  ]
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/baiyue/catkin_ws/devel/include/**",
+                "/opt/ros/kinetic/include/**",
+                "/home/baiyue/catkin_ws/src/agitr/include/**",
+                "/home/baiyue/catkin_ws/src/beginner_tutorials/include/**",
+                "/home/baiyue/catkin_ws/src/learning_tf/include/**",
+                "/home/baiyue/catkin_ws/src/r2d2/include/**",
+                "/home/baiyue/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include/**",
+                "/home/baiyue/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+                "/home/baiyue/catkin_ws/src/turtlebot3/turtlebot3_slam/include/**",
+                "/home/baiyue/catkin_ws/src/using_markers/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
 }
