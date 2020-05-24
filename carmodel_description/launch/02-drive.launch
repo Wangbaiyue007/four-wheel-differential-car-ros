@@ -1,0 +1,38 @@
+<launch>
+  <!--<arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />-->
+
+  <!--setting parameters for launch -->
+  <arg name="world_name" value="$(find carmodel_description)/world/mymap1.world"/>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- gazebo enviornment -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_name)" />
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!--<rosparam command="load" file="$(find carmodel_description)/config/diffdrive.yaml" ns="CA_diff_drive_controller" />-->
+
+  <!-- loading robot parameters -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find carmodel_description)/urdf/carmodel2.urdf.xacro'" />
+  
+  <!-- loading robot model in gazebo-->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model carmodel -param robot_description" />
+ 
+  <!-- publish joint state-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- publish TF-->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+
+</launch>

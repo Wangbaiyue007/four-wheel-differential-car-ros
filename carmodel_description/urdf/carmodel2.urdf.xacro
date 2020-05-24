@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<robot name="carmodel" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:include filename="$(find carmodel_description)/urdf/carmodel2.urdf"/>  
+<xacro:property name="wheel_radius" value="0.03018"/>
+<xacro:property name="width" value="0.13189"/>
+
+    <gazebo reference="base_link">
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="wheel_1">
+      <mu1 value="2.0"/>
+      <mu2 value="1.0"/>
+      <kp value="10000000.0" />
+      <kd value="10.0" />
+      <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="wheel_2">
+      <mu1 value="2.0"/>
+      <mu2 value="1.0"/>
+      <kp value="10000000.0" />
+      <kd value="10.0" />
+      <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="wheel_3">
+      <mu1 value="2.0"/>
+      <mu2 value="1.0"/>
+      <kp value="10000000.0" />
+      <kd value="10.0" />
+      <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="wheel_4">
+      <mu1 value="2.0"/>
+      <mu2 value="1.0"/>
+      <kp value="10000000.0" />
+      <kd value="10.0" />
+      <material>Gazebo/Grey</material>
+    </gazebo>
+
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <rosDebugLevel>na</rosDebugLevel>
+      <publishWheelTF>true</publishWheelTF>
+      <robotNamespace>/</robotNamespace>
+      <publishTf>true</publishTf>
+      <publishWheelJointState>true</publishWheelJointState>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>30.0</updateRate>
+      <legacyMode>true</legacyMode>
+      <leftJoint>joint_base_wheel2</leftJoint>
+      <rightJoint>joint_base_wheel4</rightJoint>
+      <wheelSeparation>${width*2}</wheelSeparation>
+      <wheelDiameter>${2*wheel_radius}</wheelDiameter>
+      <broadcastTF>1</broadcastTF>
+      <wheelTorque>50</wheelTorque>
+      <wheelAcceleration>1.8</wheelAcceleration>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryTopic>odom</odometryTopic>
+      <odometrySource>world</odometrySource>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+    </plugin>
+  </gazebo>
+
+</robot>
