@@ -2,7 +2,7 @@
   <!--<arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />-->
 
   <!--setting parameters for launch -->
-  <arg name="world_name" value="$(find carmodel_description)/world/mymap1.world"/>
+  <arg name="world_name" value="$(find carmodel_description)/world/mymap5.world"/>
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
@@ -30,7 +30,7 @@
   <!-- publish joint state-->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
-  <!-- publish TF-->
+  <!-- publish robot state-->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
     <param name="publish_frequency" type="double" value="50.0" />
   </node>

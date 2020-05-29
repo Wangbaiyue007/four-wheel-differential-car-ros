@@ -1,12 +1,48 @@
 # 4-wheel-differential-car-ros
-A four-wheel differential drive car in Gazebo with navigation, SLAM, and voice control<br>
+
+A four-wheel differential drive car in Gazebo with navigation, SLAM, and voice control
+
 ## Environment
-Ubuntu 16.04<br>
+
+Ubuntu 16.04
+
 ## Download
-git clone https://github.com/Wangbaiyue007/4-wheel-differential-car-ros.git <br>
+
+    git clone https://github.com/Wangbaiyue007/4-wheel-differential-car-ros.git
+
 ## Open robot in Gazebo and take control
-catkin_make<br>
-roslaunch carmodel_description 02-drive.launch<br>
-roslaunch carmodel_teleop carmodel_teleop_key.launch<br>
+
+    catkin_make  
+    roslaunch carmodel_description 02-drive.launch  
+    roslaunch carmodel_teleop carmodel_teleop_key.launch
+
+### SLAM
+
+Close all.
+
+    roslaunch carmodel_slam carmodel_slam.launch
+    roslaunch carmodel_teleop carmodel_teleop_key.launch
+
+Drive the robot around and draw a map.
+
+    cd $(where you save your map)
+    rosrun map_server map_saver -f $(YOUR_MAP_NAME)
+
+The map with **YOUR_MAP_NAME** will be saved as a **.pgm** and a **.yaml** file.
+
+### Navigation
+
+Close all.
+
+    roslaunch carmodel_nav fake_carmodel.launch
+    roslaunch carmodel_nav fake_amcl.launch
+
+Or you can choose the saved map:
+
+    roslaunch carmodel_nav fake_amcl.launch map:=$(YOUR_MAP_NAME).yaml
+
 ## Reference
-https://github.com/ROSClub/mrobot.git<br>
+
+[mrobot](https://github.com/ROSClub/mrobot.git)  
+[turtlebot](https://github.com/ROBOTIS-GIT/turtlebot3.git)  
+[rbx1](https://github.com/pirobot/rbx1.git)

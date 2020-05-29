@@ -2,12 +2,12 @@
 
 <robot name="carmodel" xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:include filename="$(find carmodel_description)/urdf/carmodel2.urdf"/>  
-<xacro:property name="wheel_radius" value="0.03018"/>
-<xacro:property name="width" value="0.13189"/>
+  <xacro:include filename="$(find carmodel_description)/urdf/carmodel2.urdf"/>  
+  <xacro:property name="wheel_radius" value="0.03018"/>
+  <xacro:property name="width" value="0.13189"/>
 
     <gazebo reference="base_link">
-      <material>Gazebo/Black</material>
+      <material>Gazebo/Orange</material>
     </gazebo>
 
     <gazebo reference="wheel_1">
@@ -66,5 +66,64 @@
       <robotBaseFrame>base_footprint</robotBaseFrame>
     </plugin>
   </gazebo>
+
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <rosDebugLevel>na</rosDebugLevel>
+      <publishWheelTF>true</publishWheelTF>
+      <robotNamespace>/</robotNamespace>
+      <publishTf>true</publishTf>
+      <publishWheelJointState>true</publishWheelJointState>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>30.0</updateRate>
+      <legacyMode>true</legacyMode>
+      <leftJoint>joint_base_wheel1</leftJoint>
+      <rightJoint>joint_base_wheel3</rightJoint>
+      <wheelSeparation>${width*2}</wheelSeparation>
+      <wheelDiameter>${2*wheel_radius}</wheelDiameter>
+      <broadcastTF>1</broadcastTF>
+      <wheelTorque>50</wheelTorque>
+      <wheelAcceleration>1.8</wheelAcceleration>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryTopic>odom</odometryTopic>
+      <odometrySource>world</odometrySource>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="base_scan">
+    <sensor type="ray" name="lds_lfcd_sensor">
+    <pose>0 0 0 0 0 0</pose>
+    <visualize>false</visualize>
+    <update_rate>5.0</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+        <samples>360</samples>
+        <resolution>1</resolution>
+        <min_angle>0.0</min_angle>
+        <max_angle>6.28319</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.120</min>
+        <max>3.5</max>
+        <resolution>0.015</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
+      <topicName>/scan</topicName>
+      <frameName>base_scan</frameName>
+    </plugin>
+    </sensor>
+  </gazebo>
+
+  <carmodel/>
 
 </robot>
