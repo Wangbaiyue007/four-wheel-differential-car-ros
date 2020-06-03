@@ -2,12 +2,15 @@
   <!--<arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />-->
 
   <!--setting parameters for launch -->
-  <arg name="world_name" value="$(find carmodel_description)/world/mymap5.world"/>
+  <arg name="world_name" value="$(find carmodel_description)/world/turtlebot3_world.world"/>
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
+  <arg name="x_pos" default="-2.0"/>
+  <arg name="y_pos" default="-0.5"/>
+  <arg name="z_pos" default="0.0"/>
 
   <!-- gazebo enviornment -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -19,13 +22,11 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <!--<rosparam command="load" file="$(find carmodel_description)/config/diffdrive.yaml" ns="CA_diff_drive_controller" />-->
-
   <!-- loading robot parameters -->
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find carmodel_description)/urdf/carmodel2.urdf.xacro'" />
   
   <!-- loading robot model in gazebo-->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model carmodel -param robot_description" />
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model carmodel -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
  
   <!-- publish joint state-->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />

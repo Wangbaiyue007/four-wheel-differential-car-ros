@@ -16,6 +16,8 @@ Ubuntu 16.04
     roslaunch carmodel_description 02-drive.launch  
     roslaunch carmodel_teleop carmodel_teleop_key.launch
 
+![coordinate](/carmodel/coordsystems_img.png)
+
 ### SLAM
 
 Close all.
@@ -32,6 +34,8 @@ The map with **YOUR_MAP_NAME** will be saved as a **.pgm** and a **.yaml** file.
 
 ### Navigation
 
+#### 1. Fake navigation
+
 Close all.
 
     roslaunch carmodel_nav fake_carmodel.launch
@@ -40,6 +44,16 @@ Close all.
 Or you can choose the saved map:
 
     roslaunch carmodel_nav fake_amcl.launch map:=$(YOUR_MAP_NAME).yaml
+
+#### 2. Gazebo navigation
+
+Close all.
+
+    roslaunch carmodel_description 02-drive.launch
+    roslaunch carmodel_nav nav_mymap_demo.launch
+
+Use the 2D navigation arrow to navigate the robot in the *turtlebot map*.  
+![navigation](/carmodel/navigation.png)
 
 ## Reference
 
