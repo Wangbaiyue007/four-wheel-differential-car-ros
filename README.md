@@ -12,6 +12,14 @@ Ubuntu 16.04
 
 ## Open robot in Gazebo and take control
 
+One necessary process before everything:
+
+    cd /carmodel_voice/libs/x64/
+    sudo cp libmsc.so /usr/lib/
+    cd ~/$(WORKSPACE)
+
+This will make sure that the **catkin_make** works.
+
     catkin_make  
     roslaunch carmodel_description 02-drive.launch  
     roslaunch carmodel_teleop carmodel_teleop_key.launch
@@ -58,11 +66,6 @@ Use the 2D nav arrow to navigate the robot in the *turtlebot map*.
 ### III. Voice control
 
 Close all.
-
-    cd /carmodel_voice/libs/x64/
-    sudo cp libmsc.so /usr/lib/
-    cd ~/$(WORKSPACE)
-    catkin_make
 
 Notice that if your computer is 32-bit, replace x64 with x86.
 
