@@ -18,7 +18,7 @@ Ubuntu 16.04
 
 ![coordinate](coordsystems_img.png)
 
-### SLAM
+### I. SLAM
 
 Close all.
 
@@ -32,7 +32,7 @@ Drive the robot around and draw a map.
 
 The map with **YOUR_MAP_NAME** will be saved as a **.pgm** and a **.yaml** file.
 
-### Navigation
+### II. Navigation
 
 #### 1. Fake navigation
 
@@ -52,8 +52,25 @@ Close all.
     roslaunch carmodel_description 02-drive.launch
     roslaunch carmodel_nav nav_mymap_demo.launch
 
-Use the 2D navigation arrow to navigate the robot in the *turtlebot map*.  
+Use the 2D nav arrow to navigate the robot in the *turtlebot map*.  
 ![navigation](navigation.png)
+
+### III. Voice control
+
+Close all.
+
+    cd /carmodel_voice/libs/x64/
+    sudo cp libmsc.so /usr/lib/
+    cd ~/$(WORKSPACE)
+    catkin_make
+
+Notice that if your computer is 32-bit, replace x64 with x86.
+
+    roslaunch carmodel_description 02-drive.launch
+    rosrun carmodel_voice iat_publish
+    rosrun carmodel_voice voice_cmd
+
+The valid command starts with "Robot", with the following operation: "forward", "back", "left", "right" or "stop", and do not contains "don't" or "not".
 
 ## Reference
 
