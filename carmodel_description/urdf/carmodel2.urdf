@@ -34,7 +34,7 @@
     <visual>
       <geometry>
         <mesh
-          filename="package://carmodel_description/meshes/Body_with_radar.STL" />
+          filename="package://carmodel_description/meshes/Body3.STL" />
       </geometry>
         <origin rpy="1.5705 0 0" xyz="-0.25 0.1675 -0.0075"/>
       <material name="white"/>
@@ -49,11 +49,11 @@
 
     <inertial>
       <origin xyz="-0.00509 0 0.03461" rpy="0 0 0"/>
-      <mass value="32"/>
+      <mass value="65.8282"/>
       <inertia
-        ixx="28.711604" ixy="0.0" ixz="0.0"
-        iyy="92.409218" iyz="0.0"
-        izz="69.233565"/>
+        ixx="63.621330" ixy="11.057206" ixz="0.021099"
+        iyy="187.798863" iyz="-0.003735"
+        izz="169.286082"/>
     </inertial>
   </link>
 
@@ -89,7 +89,7 @@
           filename="package://carmodel_description/meshes/Wheel.STL" />
       </geometry>
       <origin rpy="1.5705 0 0" xyz="-0.055 0 -0.055"/>
-      <material name="white"/>
+      <material name="black"/>
     </visual>
     <collision>
       <geometry>
@@ -114,7 +114,7 @@
           filename="package://carmodel_description/meshes/Wheel.STL" />
       </geometry>
       <origin rpy="1.5705 0 0" xyz="-0.055 0 -0.055"/>
-      <material name="white"/>
+      <material name="black"/>
     </visual>
     <collision>
       <geometry>
@@ -139,7 +139,7 @@
           filename="package://carmodel_description/meshes/Wheel.STL" />
       </geometry>
       <origin rpy="1.5705 0 0" xyz="-0.055 0 -0.055"/>
-      <material name="white"/>
+      <material name="black"/>
     </visual>
     <collision>
       <geometry>

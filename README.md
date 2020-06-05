@@ -73,10 +73,11 @@ Notice that if your computer is 32-bit, replace x64 with x86.
     rosrun carmodel_voice iat_publish
     rosrun carmodel_voice voice_cmd
 
-The valid command starts with "Robot", with the following operation: "forward", "back", "left", "right" or "stop", and do not contains "don't" or "not".
+The valid command starts with "Robot", with the following operation: "forward", "back", "left", "right" or "stop", and do not contains "don't" or "not". For example, "Robot forward" will tell the robot to move forward.
 
 ## Reference
 
 [mrobot](https://github.com/ROSClub/mrobot.git)  
 [turtlebot](https://github.com/ROBOTIS-GIT/turtlebot3.git)  
 [rbx1](https://github.com/pirobot/rbx1.git)
+[讯飞语音听写](https://www.xfyun.cn/doc/)

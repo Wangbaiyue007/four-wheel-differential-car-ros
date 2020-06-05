@@ -12,13 +12,6 @@
 
   <!-- The move_base node -->
   <include file="$(find carmodel_nav)/launch/fake_move_base.launch" />
-  
-  <!-- Run fake localization compatible with AMCL output -->
-  <node pkg="fake_localization" type="fake_localization" name="fake_localization" clear_params="true" output="screen">
-     <remap from="base_pose_ground_truth" to="odom" />
-     <param name="global_frame_id" value="map" />
-     <param name="base_frame_id" value="base_footprint" />
-  </node>
 
   <!-- A necessary transformation from map to odom-->
   <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 /map /odom 100" />
